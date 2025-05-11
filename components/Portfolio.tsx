@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from 'react';
 import {
   Code,
   Briefcase,
@@ -21,117 +21,126 @@ import {
   Wifi,
   Activity,
   HardDrive,
-} from "lucide-react"
-import type { JSX } from "react/jsx-runtime"
+} from 'lucide-react';
+import type { JSX } from 'react/jsx-runtime';
 
 // Tipos
 interface PersonalInfo {
-  name: string
-  title: string
-  email: string
-  linkedin: string
-  github: string
-  location: string
-  bio: string
-  profileImage?: string
-  youtubeLink?: string
+  name: string;
+  title: string;
+  email: string;
+  linkedin: string;
+  github: string;
+  location: string;
+  bio: string;
+  profileImage?: string;
+  youtubeLink?: string;
 }
 
 interface Skill {
-  name: string
-  icon: JSX.Element
-  logo?: string
+  name: string;
+  icon: JSX.Element;
+  logo?: string;
 }
 
 interface Experience {
-  id: number
-  role: string
-  company: string
-  period: string
-  description: string[]
-  logo?: string
+  id: number;
+  role: string;
+  company: string;
+  period: string;
+  description: string[];
+  logo?: string;
 }
 
 interface Education {
-  degree: string
-  institution: string
-  period: string
-  logo?: string
+  degree: string;
+  institution: string;
+  period: string;
+  logo?: string;
 }
 
 interface Achievement {
-  title: string
-  image?: string
+  title: string;
+  image?: string;
 }
 
 interface Project {
-  title: string
-  description: string
-  technologies: string[]
-  image?: string
+  title: string;
+  description: string;
+  technologies: string[];
+  image?: string;
 }
 
 interface IoTDevice {
-  id: string
-  name: string
-  status: "online" | "offline" | "warning"
-  type: string
-  lastPing: string
-  location: string
-  x: number
-  y: number
+  id: string;
+  name: string;
+  status: 'online' | 'offline' | 'warning';
+  type: string;
+  lastPing: string;
+  location: string;
+  x: number;
+  y: number;
 }
 
 interface SystemMetric {
-  name: string
-  value: number
-  unit: string
-  icon: JSX.Element
-  history: number[]
+  name: string;
+  value: number;
+  unit: string;
+  icon: JSX.Element;
+  history: number[];
 }
 
 const Portfolio = () => {
-  const [activeTab, setActiveTab] = useState("terminal")
-  const [activeExperienceId, setActiveExperienceId] = useState<number | null>(null)
-  const [terminalInput, setTerminalInput] = useState("")
-  const [currentTime, setCurrentTime] = useState('')
-  const [terminalHistory, setTerminalHistory] = useState<{ command: string; output: string }[]>([
+  const [activeTab, setActiveTab] = useState('terminal');
+  const [activeExperienceId, setActiveExperienceId] = useState<number | null>(
+    null,
+  );
+  const [terminalInput, setTerminalInput] = useState('');
+  const [currentTime, setCurrentTime] = useState('');
+  const [terminalHistory, setTerminalHistory] = useState<
+    { command: string; output: string }[]
+  >([
     {
-      command: "system --status",
-      output: "All systems operational. CPU: 12%, Memory: 3.2GB/16GB, Network: 42Mbps↓ 12Mbps↑",
+      command: 'system --status',
+      output:
+        'All systems operational. CPU: 12%, Memory: 3.2GB/16GB, Network: 42Mbps↓ 12Mbps↑',
     },
-    { command: "whoami", output: "Santiago José Barraza Sinning - Software Systems & Telematics Engineer" },
-  ])
+    {
+      command: 'whoami',
+      output:
+        'Santiago José Barraza Sinning - Software Systems & Telematics Engineer',
+    },
+  ]);
   const [metrics, setMetrics] = useState<SystemMetric[]>([
     {
-      name: "CPU Usage",
+      name: 'CPU Usage',
       value: 12,
-      unit: "%",
+      unit: '%',
       icon: <Cpu size={16} />,
       history: [8, 15, 10, 13, 9, 12],
     },
     {
-      name: "Memory",
+      name: 'Memory',
       value: 3.2,
-      unit: "GB",
+      unit: 'GB',
       icon: <HardDrive size={16} />,
       history: [2.8, 3.5, 3.1, 2.9, 3.0, 3.2],
     },
     {
-      name: "Network",
+      name: 'Network',
       value: 42,
-      unit: "Mbps",
+      unit: 'Mbps',
       icon: <Wifi size={16} />,
       history: [38, 45, 40, 42, 39, 42],
     },
     {
-      name: "Latency",
+      name: 'Latency',
       value: 28,
-      unit: "ms",
+      unit: 'ms',
       icon: <Activity size={16} />,
       history: [32, 25, 30, 27, 29, 28],
     },
-  ])
+  ]);
 
   useEffect(() => {
     setCurrentTime(new Date().toISOString());
@@ -143,313 +152,322 @@ const Portfolio = () => {
 
   const [iotDevices, setIotDevices] = useState<IoTDevice[]>([
     {
-      id: "dev-001",
-      name: "Temperature Sensor",
-      status: "online",
-      type: "sensor",
-      lastPing: "2s ago",
-      location: "Server Room",
+      id: 'dev-001',
+      name: 'Temperature Sensor',
+      status: 'online',
+      type: 'sensor',
+      lastPing: '2s ago',
+      location: 'Server Room',
       x: 20,
       y: 30,
     },
     {
-      id: "dev-002",
-      name: "Humidity Sensor",
-      status: "online",
-      type: "sensor",
-      lastPing: "5s ago",
-      location: "Lab Area",
+      id: 'dev-002',
+      name: 'Humidity Sensor',
+      status: 'online',
+      type: 'sensor',
+      lastPing: '5s ago',
+      location: 'Lab Area',
       x: 60,
       y: 40,
     },
     {
-      id: "dev-003",
-      name: "Motion Detector",
-      status: "warning",
-      type: "security",
-      lastPing: "1m ago",
-      location: "Entry Point",
+      id: 'dev-003',
+      name: 'Motion Detector',
+      status: 'warning',
+      type: 'security',
+      lastPing: '1m ago',
+      location: 'Entry Point',
       x: 80,
       y: 70,
     },
     {
-      id: "dev-004",
-      name: "Gateway Node",
-      status: "online",
-      type: "network",
-      lastPing: "1s ago",
-      location: "Central Hub",
+      id: 'dev-004',
+      name: 'Gateway Node',
+      status: 'online',
+      type: 'network',
+      lastPing: '1s ago',
+      location: 'Central Hub',
       x: 50,
       y: 50,
     },
     {
-      id: "dev-005",
-      name: "Power Monitor",
-      status: "offline",
-      type: "utility",
-      lastPing: "15m ago",
-      location: "Power Room",
+      id: 'dev-005',
+      name: 'Power Monitor',
+      status: 'offline',
+      type: 'utility',
+      lastPing: '15m ago',
+      location: 'Power Room',
       x: 30,
       y: 80,
     },
     {
-      id: "dev-006",
-      name: "Air Quality",
-      status: "online",
-      type: "sensor",
-      lastPing: "3s ago",
-      location: "Work Area",
+      id: 'dev-006',
+      name: 'Air Quality',
+      status: 'online',
+      type: 'sensor',
+      lastPing: '3s ago',
+      location: 'Work Area',
       x: 70,
       y: 20,
     },
     {
-      id: "dev-007",
-      name: "Backup System",
-      status: "online",
-      type: "security",
-      lastPing: "7s ago",
-      location: "Server Room",
+      id: 'dev-007',
+      name: 'Backup System',
+      status: 'online',
+      type: 'security',
+      lastPing: '7s ago',
+      location: 'Server Room',
       x: 25,
       y: 35,
     },
     {
-      id: "dev-008",
-      name: "Light Controller",
-      status: "offline",
-      type: "utility",
-      lastPing: "22m ago",
-      location: "Common Area",
+      id: 'dev-008',
+      name: 'Light Controller',
+      status: 'offline',
+      type: 'utility',
+      lastPing: '22m ago',
+      location: 'Common Area',
       x: 85,
       y: 60,
     },
-  ])
+  ]);
 
-  const terminalRef = useRef<HTMLDivElement>(null)
+  const terminalRef = useRef<HTMLDivElement>(null);
 
   const personalInfo: PersonalInfo = {
-    name: "Santiago José Barraza Sinning",
-    title: "Software Systems & Telematics Engineer",
-    email: "sjbs0212@gmail.com",
-    linkedin: "linkedin.com/in/santiagobarrazas",
-    github: "github.com/santiagobarrazas",
-    location: "Cali, Valle del Cauca, Colombia",
-    bio: "Dual major in Systems Engineering and Telematics Engineering with a strong commitment to technological project development and management. My focus is on problem-solving and continuous learning in engineering and technology, with a steadfast commitment to excellence in developing innovative solutions.",
-    profileImage: "/images/profile.jpg",
-    youtubeLink: "https://www.youtube.com/embed/NHrgtUPH1QQ",
-  }
+    name: 'Santiago José Barraza Sinning',
+    title: 'Software Systems & Telematics Engineer',
+    email: 'sjbs0212@gmail.com',
+    linkedin: 'linkedin.com/in/santiagobarrazas',
+    github: 'github.com/santiagobarrazas',
+    location: 'Cali, Valle del Cauca, Colombia',
+    bio: 'Dual major in Systems Engineering and Telematics Engineering with a strong commitment to technological project development and management. My focus is on problem-solving and continuous learning in engineering and technology, with a steadfast commitment to excellence in developing innovative solutions.',
+    profileImage: '/images/profile.jpg',
+    youtubeLink: 'https://www.youtube.com/embed/NHrgtUPH1QQ',
+  };
 
   const skills: Skill[] = [
     {
-      name: "Backend Development",
+      name: 'Backend Development',
       icon: <Server className="w-5 h-5" />,
-      logo: "/images/skills/backend.png",
+      logo: '/images/skills/backend.png',
     },
     {
-      name: "Spring Boot",
+      name: 'Spring Boot',
       icon: <Code className="w-5 h-5" />,
-      logo: "/images/skills/spring-boot.png",
+      logo: '/images/skills/spring-boot.png',
     },
     {
-      name: "NestJS",
+      name: 'NestJS',
       icon: <Code className="w-5 h-5" />,
-      logo: "/images/skills/nestjs.png",
+      logo: '/images/skills/nestjs.png',
     },
     {
-      name: "Python",
+      name: 'Python',
       icon: <Code className="w-5 h-5" />,
-      logo: "/images/skills/python.png",
+      logo: '/images/skills/python.png',
     },
     {
-      name: "Go",
+      name: 'Go',
       icon: <Code className="w-5 h-5" />,
-      logo: "/images/skills/go.png",
+      logo: '/images/skills/go.png',
     },
     {
-      name: "Kubernetes",
+      name: 'Kubernetes',
       icon: <Cloud className="w-5 h-5" />,
-      logo: "/images/skills/kubernetes.png",
+      logo: '/images/skills/kubernetes.png',
     },
     {
-      name: "AWS",
+      name: 'AWS',
       icon: <Cloud className="w-5 h-5" />,
-      logo: "/images/skills/aws.png",
+      logo: '/images/skills/aws.png',
     },
     {
-      name: "Azure",
+      name: 'Azure',
       icon: <Cloud className="w-5 h-5" />,
-      logo: "/images/skills/azure.png",
+      logo: '/images/skills/azure.png',
     },
     {
-      name: "Terraform",
+      name: 'Terraform',
       icon: <Database className="w-5 h-5" />,
-      logo: "/images/skills/terraform.png",
+      logo: '/images/skills/terraform.png',
     },
     {
-      name: "CI/CD",
+      name: 'CI/CD',
       icon: <LineChart className="w-5 h-5" />,
-      logo: "/images/skills/cicd.png",
+      logo: '/images/skills/cicd.png',
     },
     {
-      name: "Machine Learning",
+      name: 'Machine Learning',
       icon: <LineChart className="w-5 h-5" />,
-      logo: "/images/skills/ml.png",
+      logo: '/images/skills/ml.png',
     },
     {
-      name: "Competitive Programming",
+      name: 'Competitive Programming',
       icon: <Code className="w-5 h-5" />,
-      logo: "/images/skills/competitive.png",
+      logo: '/images/skills/competitive.png',
     },
-  ]
+  ];
 
   const experiences: Experience[] = [
     {
       id: 1,
-      role: "Undergraduate Student Researcher",
-      company: "Grupo de Investigación i2t - Universidad Icesi",
-      period: "August 2024 - Present",
+      role: 'Undergraduate Student Researcher',
+      company: 'Grupo de Investigación i2t - Universidad Icesi',
+      period: 'August 2024 - Present',
       description: [
-        "Maintained C++ QT desktop application for skeleton data recolection through depth cameras with MoveNet, TensorflowLite and OpenCV.",
-        "Developed Kotlin mobile app for data recolection from Arduino Nano 33 IoT through Bluetooth.",
-        "Built an embedded system using Arduino Nano 33 IoT to transmit IMU data via Bluetooth Low Energy (BLE).",
+        'Maintained C++ QT desktop application for skeleton data recolection through depth cameras with MoveNet, TensorflowLite and OpenCV.',
+        'Developed Kotlin mobile app for data recolection from Arduino Nano 33 IoT through Bluetooth.',
+        'Built an embedded system using Arduino Nano 33 IoT to transmit IMU data via Bluetooth Low Energy (BLE).',
       ],
-      logo: "/images/companies/i2t.png",
+      logo: '/images/companies/i2t.png',
     },
     {
       id: 2,
-      role: "Software Developer University Apprentice",
-      company: "TQ (Tecnoquímicas)",
-      period: "June 2024 - July 2024",
+      role: 'Software Developer University Apprentice',
+      company: 'TQ (Tecnoquímicas)',
+      period: 'June 2024 - July 2024',
       description: [
-        "Created an application to compare packaging PDFs of products from different countries using HTML, CSS, JavaScript, Python, Flask, and Azure OpenAI (GPT-4o vision model).",
-        "Implemented RAG Architecture with chunking, embeddings, and GPT-4 (Azure OpenAI).",
-        "Developed data prediction models using Regression, Random Forest, and XGBoost.",
+        'Created an application to compare packaging PDFs of products from different countries using HTML, CSS, JavaScript, Python, Flask, and Azure OpenAI (GPT-4o vision model).',
+        'Implemented RAG Architecture with chunking, embeddings, and GPT-4 (Azure OpenAI).',
+        'Developed data prediction models using Regression, Random Forest, and XGBoost.',
       ],
-      logo: "/images/companies/tq.png",
+      logo: '/images/companies/tq.jpg',
     },
     {
       id: 3,
-      role: "Competitive Programming Club Mentor",
-      company: "Universidad ICESI",
-      period: "February 2024 - Present",
+      role: 'Competitive Programming Club Mentor',
+      company: 'Universidad ICESI',
+      period: 'February 2024 - Present',
       description: [
-        "Trained and guided junior students for competitive programming contests.",
-        "Focused on algorithm development, data structure implementation, and problem-solving techniques.",
+        'Trained and guided junior students for competitive programming contests.',
+        'Focused on algorithm development, data structure implementation, and problem-solving techniques.',
       ],
-      logo: "/images/companies/icesi.png",
+      logo: '/images/companies/icesi.jpg',
     },
     {
       id: 4,
-      role: "Teaching Assistant - Telematics Engineering Capstone Project",
-      company: "Universidad ICESI",
-      period: "February 2024 - Present",
+      role: 'Teaching Assistant - Telematics Engineering Capstone Project',
+      company: 'Universidad ICESI',
+      period: 'February 2024 - Present',
       description: [
-        "Assisted students with backend (Spring Boot) and frontend development (HTML, CSS, JavaScript).",
-        "Helped create CRUD systems with MySQL database.",
-        "Managed data from WiFi-enabled microcontrollers connected to various sensors.",
+        'Assisted students with backend (Spring Boot) and frontend development (HTML, CSS, JavaScript).',
+        'Helped create CRUD systems with MySQL database.',
+        'Managed data from WiFi-enabled microcontrollers connected to various sensors.',
       ],
-      logo: "/images/companies/icesi.png",
+      logo: '/images/companies/icesi.jpg',
     },
     {
       id: 5,
-      role: "Applied Mathematics Teaching Assistant",
-      company: "Universidad ICESI",
-      period: "January 2022 - Present",
+      role: 'Applied Mathematics Teaching Assistant',
+      company: 'Universidad ICESI',
+      period: 'January 2022 - Present',
       description: [
-        "Supported students in solving numerical mathematics problems using Python.",
-        "Utilized libraries like NumPy, SymPy, SciPy for numerical analysis.",
-        "Helped with topics like double/triple integrals, linear transformations, eigenvectors, and more.",
+        'Supported students in solving numerical mathematics problems using Python.',
+        'Utilized libraries like NumPy, SymPy, SciPy for numerical analysis.',
+        'Helped with topics like double/triple integrals, linear transformations, eigenvectors, and more.',
       ],
-      logo: "/images/companies/icesi.png",
+      logo: '/images/companies/icesi.jpg',
     },
-  ]
+  ];
 
   const education: Education[] = [
     {
-      degree: "Systems Engineering",
-      institution: "Universidad ICESI",
-      period: "July 2022 - June 2026",
-      logo: "/images/education/icesi.png",
+      degree: 'Systems Engineering',
+      institution: 'Universidad ICESI',
+      period: 'July 2022 - June 2026',
+      logo: '/images/education/icesi.jpg',
     },
     {
-      degree: "Telematics Engineering",
-      institution: "Universidad ICESI",
-      period: "January 2021 - July 2026",
-      logo: "/images/education/icesi.png",
+      degree: 'Telematics Engineering',
+      institution: 'Universidad ICESI',
+      period: 'January 2021 - July 2026',
+      logo: '/images/education/icesi.jpg',
     },
     {
-      degree: "Técnico en instalaciones eléctricas residenciales",
-      institution: "Servicio Nacional de Aprendizaje (SENA)",
-      period: "January 2019 - December 2020",
-      logo: "/images/education/sena.png",
+      degree: 'Técnico en instalaciones eléctricas residenciales',
+      institution: 'Servicio Nacional de Aprendizaje (SENA)',
+      period: 'January 2019 - December 2020',
+      logo: '/images/education/sena.png',
     },
     {
-      degree: "Técnico laboral por competencias en Auxiliar en Electrónica",
-      institution: "Corporación Universitaria Autónoma de Nariño - Cali",
-      period: "January 2018 - December 2020",
-      logo: "/images/education/aunar.png",
+      degree: 'Técnico laboral por competencias en Auxiliar en Electrónica',
+      institution: 'Corporación Universitaria Autónoma de Nariño - Cali',
+      period: 'January 2018 - December 2020',
+      logo: '/images/education/aunar.jpg',
     },
-  ]
+  ];
 
   const achievements: Achievement[] = [
     {
-      title: "40th Place in ICPC Colombia 2023 National Programming Marathon",
-      image: "/images/achievements/icpc-colombia.jpg",
+      title: '40th Place in ICPC Colombia 2023 National Programming Marathon',
+      image: '/images/achievements/icpc-colombia.jpg',
     },
     {
-      title: "17th Place in ICPC South America 2023 Regional Programming Marathon",
-      image: "/images/achievements/icpc-southamerica.jpg",
+      title:
+        '17th Place in ICPC South America 2023 Regional Programming Marathon',
+      image: '/images/achievements/icpc-southamerica.jpg',
     },
     {
-      title: "1st category honorary scholarship",
-      image: "/images/achievements/scholarship.jpg",
+      title: '1st category honorary scholarship',
+      image: '/images/achievements/scholarship.jpg',
     },
-  ]
+  ];
 
   const projects: Project[] = [
     {
-      title: "Product Packaging PDF Comparator",
+      title: 'Product Packaging PDF Comparator',
       description:
-        "An application to automatically identify differences between product packaging PDFs from different countries.",
-      technologies: ["Python", "Flask", "Azure OpenAI", "GPT-4o"],
-      image: "/images/projects/pdf-comparator.jpg",
+        'An application to automatically identify differences between product packaging PDFs from different countries.',
+      technologies: ['Python', 'Flask', 'Azure OpenAI', 'GPT-4o'],
+      image: '/images/projects/pdf-comparator.jpg',
     },
     {
-      title: "IoT Data Collection System",
+      title: 'IoT Data Collection System',
       description:
-        "Built an embedded system using Arduino Nano 33 IoT with Bluetooth Low Energy to transmit IMU sensor data.",
-      technologies: ["Kotlin", "Arduino", "BLE", "3D Printing"],
-      image: "/images/projects/iot-system.jpg",
+        'Built an embedded system using Arduino Nano 33 IoT with Bluetooth Low Energy to transmit IMU sensor data.',
+      technologies: ['Kotlin', 'Arduino', 'BLE', '3D Printing'],
+      image: '/images/projects/iot-system.jpg',
     },
-  ]
+  ];
 
   const toggleExperience = (id: number) => {
     if (activeExperienceId === id) {
-      setActiveExperienceId(null)
+      setActiveExperienceId(null);
     } else {
-      setActiveExperienceId(id)
+      setActiveExperienceId(id);
     }
-  }
+  };
 
   // Simulación de actualización de métricas
   useEffect(() => {
     const interval = setInterval(() => {
       setMetrics((prevMetrics) =>
         prevMetrics.map((metric) => {
-          const newValue = Math.max(0, metric.value + (Math.random() * 6 - 3))
+          const newValue = Math.max(0, metric.value + (Math.random() * 6 - 3));
           return {
             ...metric,
             value: Number.parseFloat(newValue.toFixed(1)),
-            history: [...metric.history.slice(-5), Number.parseFloat(newValue.toFixed(1))],
-          }
+            history: [
+              ...metric.history.slice(-5),
+              Number.parseFloat(newValue.toFixed(1)),
+            ],
+          };
         }),
-      )
+      );
 
       // Actualizar estado de dispositivos IoT aleatoriamente
       setIotDevices((prevDevices) => {
         if (Math.random() > 0.7) {
-          const randomIndex = Math.floor(Math.random() * prevDevices.length)
-          const statuses: ("online" | "offline" | "warning")[] = ["online", "offline", "warning"]
-          const newStatus = statuses[Math.floor(Math.random() * statuses.length)]
+          const randomIndex = Math.floor(Math.random() * prevDevices.length);
+          const statuses: ('online' | 'offline' | 'warning')[] = [
+            'online',
+            'offline',
+            'warning',
+          ];
+          const newStatus =
+            statuses[Math.floor(Math.random() * statuses.length)];
 
           return prevDevices.map((device, idx) =>
             idx === randomIndex
@@ -457,26 +475,26 @@ const Portfolio = () => {
                   ...device,
                   status: newStatus,
                   lastPing:
-                    newStatus === "online"
+                    newStatus === 'online'
                       ? `${Math.floor(Math.random() * 10)}s ago`
                       : `${Math.floor(Math.random() * 30)}m ago`,
                 }
               : device,
-          )
+          );
         }
-        return prevDevices
-      })
-    }, 5000)
+        return prevDevices;
+      });
+    }, 5000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   // Procesamiento de comandos de terminal
   const processCommand = (cmd: string) => {
-    let output = ""
-    const lowerCmd = cmd.toLowerCase().trim()
+    let output = '';
+    const lowerCmd = cmd.toLowerCase().trim();
 
-    if (lowerCmd === "help" || lowerCmd === "--help") {
+    if (lowerCmd === 'help' || lowerCmd === '--help') {
       output = `
 Available commands:
   help                 Show this help message
@@ -492,102 +510,113 @@ Available commands:
   deploy               Simulate deployment
   pitch                Display video pitch
   exit                 Exit terminal (switch to dashboard)
-`
-    } else if (lowerCmd === "clear") {
-      setTerminalHistory([])
-      return
-    } else if (lowerCmd === "whoami") {
-      output = `${personalInfo.name} - ${personalInfo.title}\nLocation: ${personalInfo.location}\nEmail: ${personalInfo.email}\nGitHub: ${personalInfo.github}`
-    } else if (lowerCmd === "skills") {
-      output = skills.map((skill) => `- ${skill.name}`).join("\n")
-    } else if (lowerCmd === "experience") {
-      output = experiences.map((exp) => `- ${exp.role} at ${exp.company} (${exp.period})`).join("\n")
-    } else if (lowerCmd === "education") {
-      output = education.map((edu) => `- ${edu.degree} at ${edu.institution} (${edu.period})`).join("\n")
-    } else if (lowerCmd === "achievements") {
-      output = achievements.map((ach) => `- ${ach.title}`).join("\n")
-    } else if (lowerCmd === "projects") {
-      output = projects.map((proj) => `- ${proj.title}: ${proj.description}`).join("\n")
-    } else if (lowerCmd === "system --status") {
-      const cpuMetric = metrics.find((m) => m.name === "CPU Usage")
-      const memoryMetric = metrics.find((m) => m.name === "Memory")
-      const networkMetric = metrics.find((m) => m.name === "Network")
+`;
+    } else if (lowerCmd === 'clear') {
+      setTerminalHistory([]);
+      return;
+    } else if (lowerCmd === 'whoami') {
+      output = `${personalInfo.name} - ${personalInfo.title}\nLocation: ${personalInfo.location}\nEmail: ${personalInfo.email}\nGitHub: ${personalInfo.github}`;
+    } else if (lowerCmd === 'skills') {
+      output = skills.map((skill) => `- ${skill.name}`).join('\n');
+    } else if (lowerCmd === 'experience') {
+      output = experiences
+        .map((exp) => `- ${exp.role} at ${exp.company} (${exp.period})`)
+        .join('\n');
+    } else if (lowerCmd === 'education') {
+      output = education
+        .map((edu) => `- ${edu.degree} at ${edu.institution} (${edu.period})`)
+        .join('\n');
+    } else if (lowerCmd === 'achievements') {
+      output = achievements.map((ach) => `- ${ach.title}`).join('\n');
+    } else if (lowerCmd === 'projects') {
+      output = projects
+        .map((proj) => `- ${proj.title}: ${proj.description}`)
+        .join('\n');
+    } else if (lowerCmd === 'system --status') {
+      const cpuMetric = metrics.find((m) => m.name === 'CPU Usage');
+      const memoryMetric = metrics.find((m) => m.name === 'Memory');
+      const networkMetric = metrics.find((m) => m.name === 'Network');
 
-      output = `All systems operational.\nCPU: ${cpuMetric?.value}%\nMemory: ${memoryMetric?.value}GB/16GB\nNetwork: ${networkMetric?.value}Mbps↓ ${Math.floor(networkMetric?.value || 0 / 3)}Mbps↑\nActive IoT devices: ${iotDevices.filter((d) => d.status === "online").length}/${iotDevices.length}`
-    } else if (lowerCmd.startsWith("ping ")) {
-      const deviceId = lowerCmd.split(" ")[1]
-      const device = iotDevices.find((d) => d.id === deviceId)
+      output = `All systems operational.\nCPU: ${cpuMetric?.value}%\nMemory: ${memoryMetric?.value}GB/16GB\nNetwork: ${networkMetric?.value}Mbps↓ ${Math.floor(networkMetric?.value || 0 / 3)}Mbps↑\nActive IoT devices: ${iotDevices.filter((d) => d.status === 'online').length}/${iotDevices.length}`;
+    } else if (lowerCmd.startsWith('ping ')) {
+      const deviceId = lowerCmd.split(' ')[1];
+      const device = iotDevices.find((d) => d.id === deviceId);
 
       if (device) {
-        output = `PING ${device.id} (${device.name})\nStatus: ${device.status.toUpperCase()}\nLocation: ${device.location}\nLast seen: ${device.lastPing}\nType: ${device.type}`
+        output = `PING ${device.id} (${device.name})\nStatus: ${device.status.toUpperCase()}\nLocation: ${device.location}\nLast seen: ${device.lastPing}\nType: ${device.type}`;
       } else {
-        output = `Error: Device ${deviceId} not found. Use 'system --status' to see available devices.`
+        output = `Error: Device ${deviceId} not found. Use 'system --status' to see available devices.`;
       }
-    } else if (lowerCmd === "deploy") {
-      output = `Initiating deployment sequence...\n[====                ] 20%\n[========            ] 40%\n[============        ] 60%\n[================    ] 80%\n[====================] 100%\nDeployment successful. All services running.`
-    } else if (lowerCmd === "pitch") {
-      output = `Loading video pitch...\nOpening YouTube embed: ${personalInfo.youtubeLink}\n\nNOTE: Video will be displayed in the dashboard view. Type 'exit' to switch to dashboard.`
+    } else if (lowerCmd === 'deploy') {
+      output = `Initiating deployment sequence...\n[====                ] 20%\n[========            ] 40%\n[============        ] 60%\n[================    ] 80%\n[====================] 100%\nDeployment successful. All services running.`;
+    } else if (lowerCmd === 'pitch') {
+      output = `Loading video pitch...\nOpening YouTube embed: ${personalInfo.youtubeLink}\n\nNOTE: Video will be displayed in the dashboard view. Type 'exit' to switch to dashboard.`;
       // Cambiar a la pestaña dashboard después de mostrar el mensaje
       setTimeout(() => {
-        setActiveTab("dashboard")
-      }, 2000)
-    } else if (lowerCmd === "exit") {
-      setActiveTab("dashboard")
-      return
+        setActiveTab('dashboard');
+      }, 2000);
+    } else if (lowerCmd === 'exit') {
+      setActiveTab('dashboard');
+      return;
     } else {
-      output = `Command not found: ${cmd}\nType 'help' for available commands.`
+      output = `Command not found: ${cmd}\nType 'help' for available commands.`;
     }
 
-    setTerminalHistory((prev) => [...prev, { command: cmd, output }])
-    setTerminalInput("")
+    setTerminalHistory((prev) => [...prev, { command: cmd, output }]);
+    setTerminalInput('');
 
     // Scroll to bottom of terminal
     setTimeout(() => {
       if (terminalRef.current) {
-        terminalRef.current.scrollTop = terminalRef.current.scrollHeight
+        terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
       }
-    }, 0)
-  }
+    }, 0);
+  };
 
   const handleTerminalSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (terminalInput.trim()) {
-      processCommand(terminalInput)
+      processCommand(terminalInput);
     }
-  }
+  };
 
   // Función para renderizar el mini-gráfico de línea para métricas
   const renderMiniChart = (history: number[], max: number) => {
-    const width = 60
-    const height = 20
+    const width = 60;
+    const height = 20;
     const points = history
       .map((value, index) => {
-        const x = (index / (history.length - 1)) * width
-        const y = height - (value / max) * height
-        return `${x},${y}`
+        const x = (index / (history.length - 1)) * width;
+        const y = height - (value / max) * height;
+        return `${x},${y}`;
       })
-      .join(" ")
+      .join(' ');
 
     return (
       <svg width={width} height={height} className="text-green-400">
-        <polyline points={points} fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <polyline
+          points={points}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
       </svg>
-    )
-  }
+    );
+  };
 
   // Función para renderizar el color de estado de dispositivo IoT
-  const getStatusColor = (status: "online" | "offline" | "warning") => {
+  const getStatusColor = (status: 'online' | 'offline' | 'warning') => {
     switch (status) {
-      case "online":
-        return "bg-green-500"
-      case "offline":
-        return "bg-red-500"
-      case "warning":
-        return "bg-yellow-500"
+      case 'online':
+        return 'bg-green-500';
+      case 'offline':
+        return 'bg-red-500';
+      case 'warning':
+        return 'bg-yellow-500';
       default:
-        return "bg-gray-500"
+        return 'bg-gray-500';
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-[#D3D3D3] font-mono">
@@ -595,9 +624,17 @@ Available commands:
       <nav className="sticky top-0 z-50 bg-black border-b border-[#333333]">
         <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
           <div className="flex items-center mb-4 md:mb-0">
-            <div className="bg-[#00FF66] text-black rounded-sm p-2 mr-3">
-              <span className="font-bold text-xs">SB</span>
-            </div>
+            {personalInfo.profileImage ? (
+              <img
+                src={personalInfo.profileImage}
+                alt="Profile"
+                className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-[#00FF66]"
+              />
+            ) : (
+              <div className="bg-[#00FF66] text-black rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                <span className="font-bold text-sm">SB</span>
+              </div>
+            )}
             <div>
               <h1 className="text-[#00FF66] font-bold">santiago@barraza:~$</h1>
               <p className="text-xs text-[#D3D3D3]">v1.0.2 | {currentTime}</p>
@@ -605,36 +642,36 @@ Available commands:
           </div>
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-xs">
             <button
-              onClick={() => setActiveTab("terminal")}
-              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === "terminal" ? "bg-[#00FF66] text-black" : "text-[#D3D3D3] hover:border-[#00FF66]"}`}
+              onClick={() => setActiveTab('terminal')}
+              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === 'terminal' ? 'bg-[#00FF66] text-black' : 'text-[#D3D3D3] hover:border-[#00FF66]'}`}
             >
               <Terminal className="w-3 h-3 inline mr-1" />
               TERMINAL
             </button>
             <button
-              onClick={() => setActiveTab("dashboard")}
-              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === "dashboard" ? "bg-[#00FF66] text-black" : "text-[#D3D3D3] hover:border-[#00FF66]"}`}
+              onClick={() => setActiveTab('dashboard')}
+              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === 'dashboard' ? 'bg-[#00FF66] text-black' : 'text-[#D3D3D3] hover:border-[#00FF66]'}`}
             >
               <Activity className="w-3 h-3 inline mr-1" />
               DASHBOARD
             </button>
             <button
-              onClick={() => setActiveTab("experience")}
-              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === "experience" ? "bg-[#00FF66] text-black" : "text-[#D3D3D3] hover:border-[#00FF66]"}`}
+              onClick={() => setActiveTab('experience')}
+              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === 'experience' ? 'bg-[#00FF66] text-black' : 'text-[#D3D3D3] hover:border-[#00FF66]'}`}
             >
               <Briefcase className="w-3 h-3 inline mr-1" />
               EXPERIENCE
             </button>
             <button
-              onClick={() => setActiveTab("education")}
-              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === "education" ? "bg-[#00FF66] text-black" : "text-[#D3D3D3] hover:border-[#00FF66]"}`}
+              onClick={() => setActiveTab('education')}
+              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === 'education' ? 'bg-[#00FF66] text-black' : 'text-[#D3D3D3] hover:border-[#00FF66]'}`}
             >
               <Book className="w-3 h-3 inline mr-1" />
               EDUCATION
             </button>
             <button
-              onClick={() => setActiveTab("projects")}
-              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === "projects" ? "bg-[#00FF66] text-black" : "text-[#D3D3D3] hover:border-[#00FF66]"}`}
+              onClick={() => setActiveTab('projects')}
+              className={`px-3 py-1 rounded-none border border-[#333333] transition-all ${activeTab === 'projects' ? 'bg-[#00FF66] text-black' : 'text-[#D3D3D3] hover:border-[#00FF66]'}`}
             >
               <Code className="w-3 h-3 inline mr-1" />
               PROJECTS
@@ -646,13 +683,15 @@ Available commands:
       {/* Main content */}
       <main className="container mx-auto px-4 py-6">
         {/* Terminal Section */}
-        {activeTab === "terminal" && (
+        {activeTab === 'terminal' && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="md:col-span-3 bg-black border border-[#333333] rounded-sm p-2 h-[70vh] flex flex-col">
               <div className="flex items-center justify-between border-b border-[#333333] pb-1 mb-2">
                 <div className="flex items-center">
                   <Terminal className="w-4 h-4 text-[#00FF66] mr-2" />
-                  <span className="text-xs text-[#00FF66]">TERMINAL v1.0.2</span>
+                  <span className="text-xs text-[#00FF66]">
+                    TERMINAL v1.0.2
+                  </span>
                 </div>
                 <div className="flex gap-1">
                   <div className="w-2 h-2 rounded-full bg-red-500"></div>
@@ -661,7 +700,10 @@ Available commands:
                 </div>
               </div>
 
-              <div ref={terminalRef} className="flex-1 overflow-auto text-xs font-mono mb-2">
+              <div
+                ref={terminalRef}
+                className="flex-1 overflow-auto text-xs font-mono mb-2"
+              >
                 <div className="text-[#00FF66] mb-4">
                   <div className="overflow-x-auto">
                     <pre className="text-xs font-mono whitespace-pre min-w-[700px]">
@@ -677,20 +719,29 @@ Available commands:
                   </div>
                 </div>
                 <p className="text-[#00FF66] mb-4">
-                  Welcome to Santiago's Terminal. Type 'help' for available commands.
+                  Welcome to Santiago's Terminal. Type 'help' for available
+                  commands.
                 </p>
 
                 {terminalHistory.map((entry, index) => (
                   <div key={index} className="mb-3">
                     <div className="text-[#00FF66]">
-                      <span className="text-[#D3D3D3]">santiago@barraza:~$</span> {entry.command}
+                      <span className="text-[#D3D3D3]">
+                        santiago@barraza:~$
+                      </span>{' '}
+                      {entry.command}
                     </div>
-                    <pre className="text-[#D3D3D3] whitespace-pre-wrap mt-1">{entry.output}</pre>
+                    <pre className="text-[#D3D3D3] whitespace-pre-wrap mt-1">
+                      {entry.output}
+                    </pre>
                   </div>
                 ))}
               </div>
 
-              <form onSubmit={handleTerminalSubmit} className="flex border-t border-[#333333] pt-2">
+              <form
+                onSubmit={handleTerminalSubmit}
+                className="flex border-t border-[#333333] pt-2"
+              >
                 <span className="text-[#D3D3D3] mr-2">santiago@barraza:~$</span>
                 <input
                   type="text"
@@ -723,7 +774,12 @@ Available commands:
                         {metric.unit}
                       </span>
                     </div>
-                    <div className="h-5">{renderMiniChart(metric.history, Math.max(...metric.history) * 1.2)}</div>
+                    <div className="h-5">
+                      {renderMiniChart(
+                        metric.history,
+                        Math.max(...metric.history) * 1.2,
+                      )}
+                    </div>
                   </div>
                 ))}
 
@@ -734,12 +790,19 @@ Available commands:
                   </h3>
                   <div className="text-xs space-y-1">
                     {iotDevices.map((device, index) => (
-                      <div key={index} className="flex justify-between items-center">
+                      <div
+                        key={index}
+                        className="flex justify-between items-center"
+                      >
                         <div className="flex items-center">
-                          <div className={`w-2 h-2 rounded-full ${getStatusColor(device.status)} mr-2`}></div>
+                          <div
+                            className={`w-2 h-2 rounded-full ${getStatusColor(device.status)} mr-2`}
+                          ></div>
                           <span>{device.name}</span>
                         </div>
-                        <span className="text-[#999999]">{device.lastPing}</span>
+                        <span className="text-[#999999]">
+                          {device.lastPing}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -750,7 +813,7 @@ Available commands:
         )}
 
         {/* Dashboard Section */}
-        {activeTab === "dashboard" && (
+        {activeTab === 'dashboard' && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Left Panel - System Metrics */}
             <div className="bg-black border border-[#333333] rounded-sm p-3">
@@ -776,14 +839,14 @@ Available commands:
                       <div
                         className="h-full bg-[#00FF66]/20"
                         style={{
-                          width: `${(metric.value / (metric.name === "CPU Usage" ? 100 : metric.name === "Memory" ? 16 : 100)) * 100}%`,
+                          width: `${(metric.value / (metric.name === 'CPU Usage' ? 100 : metric.name === 'Memory' ? 16 : 100)) * 100}%`,
                         }}
                       ></div>
                       <div className="absolute inset-0 flex items-center justify-center text-xs">
-                        {metric.name === "CPU Usage" && `${metric.value}/100`}
-                        {metric.name === "Memory" && `${metric.value}/16GB`}
-                        {metric.name === "Network" && `${metric.value}Mbps`}
-                        {metric.name === "Latency" && `${metric.value}ms`}
+                        {metric.name === 'CPU Usage' && `${metric.value}/100`}
+                        {metric.name === 'Memory' && `${metric.value}/16GB`}
+                        {metric.name === 'Network' && `${metric.value}Mbps`}
+                        {metric.name === 'Latency' && `${metric.value}ms`}
                       </div>
                     </div>
                   </div>
@@ -860,10 +923,16 @@ Available commands:
                 {/* Grid lines */}
                 <div className="absolute inset-0 grid grid-cols-10 grid-rows-10">
                   {Array.from({ length: 10 }).map((_, i) => (
-                    <div key={`col-${i}`} className="border-r border-[#222222] h-full"></div>
+                    <div
+                      key={`col-${i}`}
+                      className="border-r border-[#222222] h-full"
+                    ></div>
                   ))}
                   {Array.from({ length: 10 }).map((_, i) => (
-                    <div key={`row-${i}`} className="border-b border-[#222222] w-full"></div>
+                    <div
+                      key={`row-${i}`}
+                      className="border-b border-[#222222] w-full"
+                    ></div>
                   ))}
                 </div>
 
@@ -876,17 +945,21 @@ Available commands:
                       left: `${device.x}%`,
                       top: `${device.y}%`,
                       backgroundColor:
-                        device.status === "online" ? "#00FF66" : device.status === "warning" ? "#FFD700" : "#FF4136",
+                        device.status === 'online'
+                          ? '#00FF66'
+                          : device.status === 'warning'
+                            ? '#FFD700'
+                            : '#FF4136',
                     }}
                     title={`${device.name} (${device.id}) - ${device.status.toUpperCase()}`}
                   >
                     <div
                       className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-30 ${
-                        device.status === "online"
-                          ? "bg-green-400"
-                          : device.status === "warning"
-                            ? "bg-yellow-400"
-                            : "bg-red-400"
+                        device.status === 'online'
+                          ? 'bg-green-400'
+                          : device.status === 'warning'
+                            ? 'bg-yellow-400'
+                            : 'bg-red-400'
                       }`}
                     ></div>
                   </div>
@@ -895,10 +968,12 @@ Available commands:
                 {/* Connection lines */}
                 <svg className="absolute inset-0 w-full h-full">
                   {iotDevices
-                    .filter((d) => d.status === "online")
+                    .filter((d) => d.status === 'online')
                     .map((device, index) => {
-                      const gatewayDevice = iotDevices.find((d) => d.id === "dev-004")
-                      if (gatewayDevice && device.id !== "dev-004") {
+                      const gatewayDevice = iotDevices.find(
+                        (d) => d.id === 'dev-004',
+                      );
+                      if (gatewayDevice && device.id !== 'dev-004') {
                         return (
                           <line
                             key={index}
@@ -911,9 +986,9 @@ Available commands:
                             strokeDasharray="5,5"
                             strokeOpacity="0.3"
                           />
-                        )
+                        );
                       }
-                      return null
+                      return null;
                     })}
                 </svg>
               </div>
@@ -923,10 +998,14 @@ Available commands:
                   <div key={index} className="border border-[#333333] p-2">
                     <div className="flex justify-between items-center">
                       <div className="flex items-center">
-                        <div className={`w-2 h-2 rounded-full ${getStatusColor(device.status)} mr-2`}></div>
+                        <div
+                          className={`w-2 h-2 rounded-full ${getStatusColor(device.status)} mr-2`}
+                        ></div>
                         <span className="font-bold">{device.name}</span>
                       </div>
-                      <span className="text-[#999999] text-xs">{device.id}</span>
+                      <span className="text-[#999999] text-xs">
+                        {device.id}
+                      </span>
                     </div>
                     <div className="mt-1 text-[#999999] text-xs">
                       <div>Location: {device.location}</div>
@@ -941,16 +1020,30 @@ Available commands:
             {/* Right Panel - Personal Info & Skills */}
             <div className="space-y-4">
               <div className="bg-black border border-[#333333] rounded-sm p-3">
-                <h2 className="text-sm text-[#00FF66] border-b border-[#333333] pb-2 mb-3">SYSTEM USER</h2>
+                <h2 className="text-sm text-[#00FF66] border-b border-[#333333] pb-2 mb-3">
+                  SYSTEM USER
+                </h2>
 
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 bg-[#00FF66] rounded-sm flex items-center justify-center text-black font-bold">
-                    SB
-                  </div>
+                  {personalInfo.profileImage ? (
+                    <img
+                      src={personalInfo.profileImage}
+                      alt="Profile"
+                      className="w-24 h-24 rounded-sm object-cover mr-4 border-2 border-[#00FF66]"
+                    />
+                  ) : (
+                    <div className="bg-[#00FF66] text-black rounded-sm w-12 h-12 flex items-center justify-center mr-4">
+                      <span className="font-bold text-sm">SB</span>
+                    </div>
+                  )}
                   <div>
                     <h3 className="text-sm font-bold">{personalInfo.name}</h3>
-                    <p className="text-xs text-[#999999]">{personalInfo.title}</p>
-                    <p className="text-xs text-[#999999]">{personalInfo.location}</p>
+                    <p className="text-xs text-[#999999]">
+                      {personalInfo.title}
+                    </p>
+                    <p className="text-xs text-[#999999]">
+                      {personalInfo.location}
+                    </p>
                   </div>
                 </div>
 
@@ -995,7 +1088,10 @@ Available commands:
 
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   {skills.map((skill, index) => (
-                    <div key={index} className="border border-[#333333] p-2 flex items-center gap-2">
+                    <div
+                      key={index}
+                      className="border border-[#333333] p-2 flex items-center gap-2"
+                    >
                       <div className="text-[#00FF66]">{skill.icon}</div>
                       <span>{skill.name}</span>
                     </div>
@@ -1007,7 +1103,7 @@ Available commands:
         )}
 
         {/* Experience Section */}
-        {activeTab === "experience" && (
+        {activeTab === 'experience' && (
           <div className="bg-black border border-[#333333] rounded-sm p-4">
             <h2 className="text-xl text-[#00FF66] border-b border-[#333333] pb-2 mb-4 flex items-center">
               <Briefcase className="w-5 h-5 mr-2" />
@@ -1016,23 +1112,36 @@ Available commands:
 
             <div className="space-y-4">
               {experiences.map((exp) => (
-                <div key={exp.id} className="border border-[#333333] p-3 hover:border-[#00FF66] transition-colors">
+                <div
+                  key={exp.id}
+                  className="border border-[#333333] p-3 hover:border-[#00FF66] transition-colors"
+                >
                   <div
                     className="flex justify-between items-start cursor-pointer"
                     onClick={() => toggleExperience(exp.id)}
                   >
                     <div className="flex gap-4 items-center">
-                      <div className="w-10 h-10 bg-[#222222] rounded-sm flex items-center justify-center text-[#00FF66]">
-                        <Briefcase className="w-5 h-5" />
-                      </div>
+                      {exp.logo ? (
+                        <img
+                          src={exp.logo}
+                          alt={exp.company}
+                          className="w-10 h-10 rounded-sm"
+                        />
+                      ) : (
+                        <div className="w-10 h-10 bg-[#222222] rounded-sm flex items-center justify-center text-[#00FF66]">
+                          <Briefcase className="w-5 h-5" />
+                        </div>
+                      )}
                       <div>
-                        <h3 className="text-sm font-bold text-white">{exp.role}</h3>
+                        <h3 className="text-sm font-bold text-white">
+                          {exp.role}
+                        </h3>
                         <p className="text-xs text-[#999999]">{exp.company}</p>
                         <p className="text-xs text-[#999999]">{exp.period}</p>
                       </div>
                     </div>
                     <ChevronDown
-                      className={`w-4 h-4 text-[#00FF66] transition-transform ${activeExperienceId === exp.id ? "transform rotate-180" : ""}`}
+                      className={`w-4 h-4 text-[#00FF66] transition-transform ${activeExperienceId === exp.id ? 'transform rotate-180' : ''}`}
                     />
                   </div>
                   {activeExperienceId === exp.id && (
@@ -1051,7 +1160,7 @@ Available commands:
         )}
 
         {/* Education Section */}
-        {activeTab === "education" && (
+        {activeTab === 'education' && (
           <div className="bg-black border border-[#333333] rounded-sm p-4">
             <h2 className="text-xl text-[#00FF66] border-b border-[#333333] pb-2 mb-4 flex items-center">
               <Book className="w-5 h-5 mr-2" />
@@ -1060,14 +1169,27 @@ Available commands:
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {education.map((edu, index) => (
-                <div key={index} className="border border-[#333333] p-3 hover:border-[#00FF66] transition-colors">
+                <div
+                  key={index}
+                  className="border border-[#333333] p-3 hover:border-[#00FF66] transition-colors"
+                >
                   <div className="flex gap-4 items-center">
-                    <div className="w-10 h-10 bg-[#222222] rounded-sm flex items-center justify-center text-[#00FF66]">
-                      <Book className="w-5 h-5" />
-                    </div>
+                    {edu.logo ? (
+                      <img
+                        src={edu.logo}
+                        alt={edu.institution}
+                        className="w-10 h-10 rounded-sm"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 bg-[#222222] rounded-sm flex items-center justify-center text-[#00FF66]">
+                        <Book className="w-5 h-5" />
+                      </div>
+                    )}
                     <div>
                       <h3 className="text-sm font-bold">{edu.degree}</h3>
-                      <p className="text-xs text-[#999999]">{edu.institution}</p>
+                      <p className="text-xs text-[#999999]">
+                        {edu.institution}
+                      </p>
                       <p className="text-xs text-[#999999]">{edu.period}</p>
                     </div>
                   </div>
@@ -1082,7 +1204,10 @@ Available commands:
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {achievements.map((achievement, index) => (
-                <div key={index} className="border border-[#333333] p-3 hover:border-[#00FF66] transition-colors">
+                <div
+                  key={index}
+                  className="border border-[#333333] p-3 hover:border-[#00FF66] transition-colors"
+                >
                   <div className="flex gap-4 items-center">
                     <div className="w-10 h-10 bg-[#222222] rounded-sm flex items-center justify-center text-[#00FF66]">
                       <Award className="w-5 h-5" />
@@ -1098,7 +1223,7 @@ Available commands:
         )}
 
         {/* Projects Section */}
-        {activeTab === "projects" && (
+        {activeTab === 'projects' && (
           <div className="bg-black border border-[#333333] rounded-sm p-4">
             <h2 className="text-xl text-[#00FF66] border-b border-[#333333] pb-2 mb-4 flex items-center">
               <Code className="w-5 h-5 mr-2" />
@@ -1107,12 +1232,22 @@ Available commands:
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project, index) => (
-                <div key={index} className="border border-[#333333] p-3 hover:border-[#00FF66] transition-colors">
-                  <h3 className="text-sm font-bold text-[#00FF66] mb-2">{project.title}</h3>
-                  <p className="text-xs text-[#D3D3D3] mb-3">{project.description}</p>
+                <div
+                  key={index}
+                  className="border border-[#333333] p-3 hover:border-[#00FF66] transition-colors"
+                >
+                  <h3 className="text-sm font-bold text-[#00FF66] mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-[#D3D3D3] mb-3">
+                    {project.description}
+                  </p>
                   <div className="flex flex-wrap gap-2 mb-2">
                     {project.technologies.map((tech, techIndex) => (
-                      <span key={techIndex} className="px-2 py-1 bg-[#222222] text-[#00FF66] rounded-sm text-xs">
+                      <span
+                        key={techIndex}
+                        className="px-2 py-1 bg-[#222222] text-[#00FF66] rounded-sm text-xs"
+                      >
                         {tech}
                       </span>
                     ))}
@@ -1162,7 +1297,7 @@ Available commands:
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Portfolio
+export default Portfolio;
